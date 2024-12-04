@@ -1,10 +1,10 @@
 const campoEntrada = document.getElementById("campoEntrada");
-const formTarefa = document.getElementById("formaTarefa");
+const formTarefa = document.getElementById("formTarefa");
 const listaTarefa = document.getElementById("listaTarefas");
 
 function novaTarefa () {
 
-    function novaTarefa() {
+          
         const nomeTarefa = campoEntrada.value.trim();
 
         if (nomeTarefa === "") {
@@ -19,11 +19,11 @@ function novaTarefa () {
         const btnExcluir = document.createElement("button");
 
         span.innerText = nomeTarefa;
-        btnExcluir.innerHTML = "< i class= 'bi bi-trash'></i>";
+        btnExcluir.innerHTML = "<i class='bi bi-trash'></i>";
         btnExcluir.setAttribute("aria-label", "Excluir tarefa");
 
-        span,onclick = () => {
-            EventCounts.target.classList.toggle("concluida");
+        span.onclick = (evento) => {
+            evento.target.classList.toggle("concluida");
            
         };
 
@@ -33,7 +33,18 @@ function novaTarefa () {
 
 
         itemTarefa.appendChild(span);
-        
+        itemTarefa.appendChild(btnExcluir);
+        listaTarefa.appendChild(itemTarefa);
 
-    }
+        campoEntrada.value = ""; 
+               
+    
 }
+
+   
+    formTarefa.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        novaTarefa();
+    });
+
+    
